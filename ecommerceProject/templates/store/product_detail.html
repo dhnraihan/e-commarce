@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mx-auto py-8">
+    <div class="bg-white p-6 rounded shadow">
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-1/2">
+          {% if product.image_url %}
+            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-64 object-cover">
+          {% endif %}
+        </div>
+        <div class="md:w-1/2 md:pl-6">
+          <h1 class="text-3xl font-bold mb-4">{{ product.name }}</h1>
+          <p class="mb-4">{{ product.description }}</p>
+          <p class="text-xl font-semibold mb-4">${{ product.price }}</p>
+          <a href="{% url 'add_to_cart' product.id %}" class="bg-green-500 text-white py-2 px-4 rounded">
+            Add to Cart
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6">
+      <a href="{% url 'product_list' %}" class="text-blue-500">← Back to Products</a>
+    </div>
+  </div>
+
+{% endblock %}
+

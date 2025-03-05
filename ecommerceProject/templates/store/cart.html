@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">Shopping Cart</h1>
+    {% if cart_items %}
+      <table class="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 border">Product</th>
+            <th class="py-2 px-4 border">Quantity</th>
+            <th class="py-2 px-4 border">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart_items %}
+          <tr>
+            <td class="py-2 px-4 border">{{ item.product.name }}</td>
+            <td class="py-2 px-4 border">{{ item.quantity }}</td>
+            <td class="py-2 px-4 border">${{ item.subtotal }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="mt-4 text-right">
+        <p class="text-xl font-bold">Total: ${{ total }}</p>
+      </div>
+      <div class="mt-6 text-center">
+        <a href="{% url 'checkout' %}" class="bg-blue-500 text-white py-2 px-4 rounded">
+          Proceed to Checkout
+        </a>
+      </div>
+    {% else %}
+      <p class="text-center">Your cart is empty!</p>
+    {% endif %}
+    <div class="mt-6">
+      <a href="{% url 'product_list' %}" class="text-blue-500">← Continue Shopping</a>
+    </div>
+  </div>
+{% endblock %}

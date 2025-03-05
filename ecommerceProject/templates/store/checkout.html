@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">Checkout</h1>
+    <h2 class="text-xl mb-4">Order Summary</h2>
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border">Product</th>
+          <th class="py-2 px-4 border">Quantity</th>
+          <th class="py-2 px-4 border">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart_items %}
+        <tr>
+          <td class="py-2 px-4 border">{{ item.product.name }}</td>
+          <td class="py-2 px-4 border">{{ item.quantity }}</td>
+          <td class="py-2 px-4 border">${{ item.subtotal }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="mt-4 text-right">
+      <p class="text-xl font-bold">Total: ${{ total }}</p>
+    </div>
+    <form method="post" class="mt-6 text-center">
+      {% csrf_token %}
+      <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded">
+        Confirm Payment
+      </button>
+    </form>
+    <div class="mt-6 text-center">
+      <a href="{% url 'cart_view' %}" class="text-blue-500">← Back to Cart</a>
+    </div>
+  </div>
+
+{% endblock %}
