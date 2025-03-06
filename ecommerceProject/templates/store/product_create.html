@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block content %}
+
+<section
+  class="bg-gradient-to-b from-indigo-50 to-blue-50 min-h-screen flex items-center justify-center"
+>
+  <div class="w-full max-w-lg">
+    <div class="bg-white rounded-lg shadow-lg p-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">
+        Add Product
+      </h2>
+      <form method="post">
+        {% csrf_token %}
+        <div class="space-y-5">
+          <div>
+            <label for="id_name" class="block text-gray-700 font-medium mb-1"
+              >Product Name</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="id_name"
+              class="form-input w-full border border-gray-300 rounded py-2 px-3"
+              placeholder="Product Name"
+            />
+          </div>
+          <div>
+            <label
+              for="id_description"
+              class="block text-gray-700 font-medium mb-1"
+              >Description</label
+            >
+            <textarea
+              name="description"
+              id="id_description"
+              rows="4"
+              class="form-textarea w-full border border-gray-300 rounded py-2 px-3"
+              placeholder="Product Description"
+            ></textarea>
+          </div>
+          <div>
+            <label for="id_price" class="block text-gray-700 font-medium mb-1"
+              >Price</label
+            >
+            <input
+              type="number"
+              name="price"
+              id="id_price"
+              class="form-input w-full border border-gray-300 rounded py-2 px-3"
+              placeholder="Product Price"
+              step="0.01"
+            />
+          </div>
+          <div>
+            <label for="id_image" class="block text-gray-700 font-medium mb-1">add image</label>
+            <input type="file" name="image" id="id_image" class="form-input w-full border border-gray-300 rounded py-2 px-3">
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition duration-200"
+          >
+            Create Product
+          </button>
+        </div>
+      </form>
+      <div class="mt-6 text-center">
+        <a href="{% url 'product_list' %}" class="text-blue-500 hover:underline"
+          >Back to Product List</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

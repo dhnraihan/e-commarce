@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Order, OrderItem
+from .forms import ProductForm
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -12,7 +13,8 @@ def main(request):
 
 
 def home(request):
-    return render(request, 'store/home.html')
+    products = Product.objects.all()
+    return render(request, 'store/home.html', {'products': products})
 
 def product_list(request):
     products = Product.objects.all()
@@ -29,10 +31,27 @@ def _get_cart(request):
     """
     return request.session.get('cart', {})
 
+@login_required
+def product_create(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, "Product created successfully!")
+            return redirect('product_detail', pk=product.pk)
+        else:
+            messages.error(request, "Product creation failed. Please correct the errors.")
+    else:
+        form = ProductForm()
+    return render(request, 'store/product_create.html', {'form': form})
+
+
+@login_required
 def _save_cart(request, cart):
     request.session['cart'] = cart
     request.session.modified = True
 
+@login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     cart = _get_cart(request)

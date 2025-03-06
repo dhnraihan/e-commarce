@@ -1,21 +1,30 @@
 {% extends 'base.html' %}
-
 {% block content %}
-  <div class="container mx-auto py-8">
-    <h1 class="text-3xl font-bold mb-6 text-center">Product Listing</h1>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+  <div class="container mx-auto py-12 px-4">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-10">Our Products</h1>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       {% for product in products %}
-      <div class="bg-white p-4 rounded shadow">
-        {% if product.image_url %}
-          <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-40 object-cover mb-4">
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-56 object-cover">
+        {% else %}
+          <img src="https://via.placeholder.com/400x300?text=No+Image" alt="No Image Available" class="w-full h-56 object-cover">
         {% endif %}
-        <h2 class="text-xl font-semibold">{{ product.name }}</h2>
-        <p class="text-gray-700 mt-2">${{ product.price }}</p>
-        <a href="{% url 'product_detail' product.pk %}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">
-          View Details
-        </a>
+        
+        <div class="p-6 text-center">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ product.name }}</h2>
+          <p class="text-gray-700 text-lg font-bold">${{ product.price }}</p>
+          <a href="{% url 'product_detail' product.pk %}" class="mt-4 inline-block bg-blue-600 text-white font-medium py-2 px-6 rounded shadow-md hover:bg-blue-700 transition duration-300">
+            View Details
+          </a>
+        </div>
       </div>
+      {% empty %}
+      <p class="text-center col-span-4 text-gray-500">কোনো প্রোডাক্ট নেই!</p>
       {% endfor %}
     </div>
   </div>
+  
 {% endblock %}

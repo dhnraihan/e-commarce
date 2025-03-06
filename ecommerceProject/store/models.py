@@ -3,12 +3,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
 class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    image_url = models.URLField(blank=True, null=True)  # URL for product image
+    image = models.ImageField(upload_to='media/', blank=True, null=True) # URL for product image
 
     def __str__(self):
         return self.name

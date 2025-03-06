@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
-  <div class="container mx-auto py-8">
+
+<div class="container mx-auto py-8">
     <h1 class="text-3xl font-bold mb-6 text-center">Shopping Cart</h1>
     {% if cart_items %}
       <table class="min-w-full bg-white">
@@ -36,5 +36,5 @@
     <div class="mt-6">
       <a href="{% url 'product_list' %}" class="text-blue-500">← Continue Shopping</a>
     </div>
-  </div>
+</div>
 {% endblock %}

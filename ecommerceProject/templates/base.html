@@ -4,9 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Authentication System</title>
+    <title>E</title>
     <script src="https://cdn.tailwindcss.com"></script>
      <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <style>
+    /* Custom transition for inputs */
+    .form-input, .form-textarea {
+        transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .form-input:focus, .form-textarea:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+    }
+    </style>
 </head>
 <body class="bg-gray-100">
 
@@ -19,9 +30,9 @@
                 <div>
                     <ul class="flex items-center">
                         <li><a href="{% url 'product_list' %}" class="text-white hover:text-gray-200 px-3">Shop</a></li>
-                        <li><a href="" class="text-white hover:text-gray-200 px-3">Cart</a></li>
+                        <li><a href="{% url 'cart_view' %}" class="text-white hover:text-gray-200 px-3">Cart</a></li>
                         <li><a href="{% url 'order_tracking' %}" class="text-white hover:text-gray-200 px-3">Track Order</a></li>
-                        <li><a href="" class="text-white hover:text-gray-200 px-3">Contact</a></li>
+                        <li><a href="{% url 'product_create' %}" class="text-white hover:text-gray-200 px-3">Create Product</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
