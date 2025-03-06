@@ -14,11 +14,6 @@ def main(request):
     return render(request, 'store/main.html')
 
 
-# def home(request):
-#     products = Product.objects.all()
-#     return render(request, 'store/home.html', {'products': products})
-
-
 def home(request):
     products = list(Product.objects.all())  # QuerySet to list
     random.shuffle(products)  # Shuffle the list
