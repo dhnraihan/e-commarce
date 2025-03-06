@@ -4,6 +4,8 @@ from .forms import ProductForm
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+import random
+
 
 # Create your views here.
 
@@ -12,12 +14,19 @@ def main(request):
     return render(request, 'store/main.html')
 
 
+# def home(request):
+#     products = Product.objects.all()
+#     return render(request, 'store/home.html', {'products': products})
+
+
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'store/home.html', {'products': products})
+    products = list(Product.objects.all())  # QuerySet to list
+    random.shuffle(products)  # Shuffle the list
+    return render(request, 'store/home.html', {'products': products[:3]})
 
 def product_list(request):
     products = Product.objects.all()
+    
     return render(request, 'store/product_list.html', {'products': products})
 
 def product_detail(request, pk):

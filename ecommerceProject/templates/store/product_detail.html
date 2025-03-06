@@ -7,7 +7,7 @@
         <!-- Product Image -->
         <div class="md:w-1/2">
           {% if product.image %}
-            <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-96 object-cover">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-96 object-cover">
           {% else %}
             <img src="https://via.placeholder.com/400" alt="Default Image" class="w-full h-96 object-cover">
           {% endif %}

@@ -85,26 +85,28 @@
   <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-8">Featured Products</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {% for product in products|slice:":3" %}
-          <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+          {% for product in products %}
+          <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
               {% if product.image %}
-                  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover" />
+                  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover rounded-t-lg" />
               {% else %}
-                  <img src="https://via.placeholder.com/400x300?text=No+Image" alt="No Image Available" class="w-full h-48 object-cover" />
+                  <img src="https://via.placeholder.com/400x300?text=No+Image" alt="No Image Available" class="w-full h-48 object-cover rounded-t-lg" />
               {% endif %}
               <div class="p-6 text-center">
                   <h3 class="font-bold text-xl mb-2">{{ product.name }}</h3>
-                  <p class="text-gray-700">${{ product.price }}</p>
-                  <a href="{% url 'product_detail' product.pk %}" class="mt-4 inline-block text-blue-500 hover:underline">
+                  <p class="text-gray-700 text-lg font-semibold">${{ product.price }}</p>
+                  <a href="{% url 'product_detail' product.pk %}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded shadow hover:bg-blue-700 transition">
                       View Details
                   </a>
               </div>
           </div>
           {% empty %}
-          <p class="text-center col-span-3 text-gray-500">কোনো প্রোডাক্ট নেই!</p>
+          <p class="text-center col-span-3 text-gray-500">No products available!</p>
           {% endfor %}
       </div>
   </div>
 </section>
+
+
 
 {% endblock %}
