@@ -14,7 +14,7 @@ Welcome to **eCommerce Store**, a modern eCommerce web application built using D
 ## Technologies Used
 
 - **Backend:** Django, Django ORM
-- **Frontend:** Tailwind CSS, HTMX (if used)
+- **Frontend:** Tailwind CSS, HTMX
 - **Database:** SQLite (default), can be switched to PostgreSQL/MySQL
 - **Deployment:** Gunicorn, Nginx (for production)
 
