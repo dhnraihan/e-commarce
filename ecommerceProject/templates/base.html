@@ -57,9 +57,11 @@
             <a href="{% url 'order_tracking' %}" class="nav-link text-white"
               >Track Order</a
             >
+            {% if user.is_authenticated and user.is_superuser %}
             <a href="{% url 'product_create' %}" class="nav-link text-white"
               >Create Product</a
             >
+            {% endif %}
           </div>
 
           <!-- Authentication -->

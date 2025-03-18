@@ -4,7 +4,7 @@ Welcome to **eCommerce Store**, a modern eCommerce web application built using *
 
 ## ✨ Features  
 
-- 🛒 **Product Listing & Detail Pages**  
+- 🛒 **Product Listing & Detail Pages (Add Product: Superuser Only)**  
 - 🔍 **Search & Filter Products**  
 - 🎁 **Shopping Cart & Checkout System**  
 - 🔑 **User Authentication (Login, Register, Logout)**  

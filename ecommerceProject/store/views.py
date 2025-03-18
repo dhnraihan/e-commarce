@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Order, OrderItem
 from .forms import ProductForm
 from decimal import Decimal
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 import random
 
@@ -35,8 +35,18 @@ def _get_cart(request):
     """
     return request.session.get('cart', {})
 
+def is_superuser(user):
+    """
+    Check if a user is a superuser.
+    """
+    return user.is_superuser
+
 @login_required
+@user_passes_test(is_superuser) 
 def product_create(request):
+    """
+    View to create a new product (only accessible to superusers).
+    """
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -48,6 +58,7 @@ def product_create(request):
     else:
         form = ProductForm()
     return render(request, 'store/product_create.html', {'form': form})
+
 
 
 @login_required
