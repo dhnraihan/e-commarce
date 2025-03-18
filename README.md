@@ -66,8 +66,10 @@ To deploy the project on a live server (e.g., Heroku, DigitalOcean, AWS):
 
 ## Screenshots
 
-![Homepage Screenshot](https://via.placeholder.com/800x400?text=Homepage)
-![Product Page](https://via.placeholder.com/800x400?text=Product+Page)
+![Homepage Screenshot](ecommerceProject/static/img/screenshot-1.webp)
+![Product Page](ecommerceProject/static/img/screenshot-2.webp)
+![Create Product](ecommerceProject/static/img/screenshot-3.webp)
+![Profile Page](ecommerceProject/static/img/screenshot-4.webp)
 
 ## Contributing
 
