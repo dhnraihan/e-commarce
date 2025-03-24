@@ -10,14 +10,11 @@ import random
 # Create your views here.
 
 
-def main(request):
-    return render(request, 'store/main.html')
-
 
 def home(request):
     products = list(Product.objects.all())  # QuerySet to list
     random.shuffle(products)  # Shuffle the list
-    return render(request, 'store/home.html', {'products': products[:3]})
+    return render(request, 'store/home.html', {'products': products[:4]})
 
 def product_list(request):
     products = Product.objects.all()
